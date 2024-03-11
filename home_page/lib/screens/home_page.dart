@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 
+class MenuOption {
+  final IconData leadIcon;
+  final IconData trailIcon;
+  final String title;
+
+  const MenuOption({required this.title, required this.leadIcon, required this.trailIcon});
+}
+
 class HomePage extends StatelessWidget{
   final String title;
-  final List<String> opciones = const <String>[
-    'Opción 01',
-    'Opción 02',
-    'Opción 03',
-    'Opción 04',
-    'Opción 05',
-    'Opción 06',
-    'Opción 07',
-    'Opción 08',
-    'Opción 09',
-    'Opción 10',
+  final List<MenuOption> opciones = const <MenuOption>[
+    MenuOption(title:'Opción 01', leadIcon: Icons.add, trailIcon: Icons.alarm),
+    MenuOption(title:'Opción 02', leadIcon: Icons.backpack, trailIcon: Icons.alarm),
+    MenuOption(title:'Opción 03', leadIcon: Icons.cable_sharp, trailIcon: Icons.alarm),
+    MenuOption(title:'Opción 04', leadIcon: Icons.dangerous, trailIcon: Icons.alarm),
+    MenuOption(title:'Opción 05', leadIcon: Icons.earbuds, trailIcon: Icons.alarm),
+    MenuOption(title:'Opción 06', leadIcon: Icons.face_3_sharp, trailIcon: Icons.alarm),
+    MenuOption(title:'Opción 07', leadIcon: Icons.gamepad, trailIcon: Icons.alarm),
+    MenuOption(title:'Opción 08', leadIcon: Icons.h_mobiledata, trailIcon: Icons.alarm),
+    MenuOption(title:'Opción 09', leadIcon: Icons.ice_skating, trailIcon: Icons.alarm),
   ];
 
   const HomePage({super.key, required this.title});
@@ -38,9 +45,9 @@ class HomePage extends StatelessWidget{
   ListTile getListTile( int i){
     const TextStyle estiloTexto = TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
     return ListTile(
-            leading: const Icon(Icons.alarm_add),
-            title: Text(opciones[i], style: estiloTexto),
-            trailing: const Icon(Icons.alarm_off),
+            leading: Icon(opciones[i].leadIcon),
+            title: Text(opciones[i].title, style: estiloTexto),
+            trailing: Icon(opciones[i].trailIcon),
     );
   }
 }
